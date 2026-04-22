@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regalia Thrift - Discover Timeless Fashion | Curated Secondhand Clothing</title>
+    <meta name="description"
+        content="Regalia Thrift: Discover unique, curated secondhand fashion. Vintage classics, designer pieces, and sustainable style for everyone.">
+    <link rel="icon" type="image/svg+xml"
+        href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="10" y="20" width="80" height="60" stroke="%23b8860b" stroke-width="3" fill="none" rx="4"/><circle cx="35" cy="35" r="8" fill="%23b8860b"/><circle cx="65" cy="35" r="8" fill="%23b8860b"/><path d="M 25 55 Q 50 65 75 55" stroke="%23b8860b" stroke-width="3" fill="none"/></svg>'>
+    <style>
+        :root {
+            --primary-dark: #1a1a1a;
+            --primary-light: #f5f5f5;
+            --accent-gold: #b8860b;
+            --accent-cream: #f4e8d8;
+            --accent-rose: #d4a5a5;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--primary-light);
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(184, 134, 11, 0.1);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .brand-icon {
+            font-size: 1.8rem;
+            margin-right: 0.5rem;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .shop-btn {
+            background: var(--accent-gold);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+        }
+
+        .shop-btn:hover {
+            background: #a07c0a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--accent-gold);
+            transition: all 0.3s;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            margin-top: 70px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #faf8f3 0%, #f0ebe5 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 165, 165, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(184, 134, 11, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-title {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--accent-rose) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-gold);
+            color: white;
+            border-color: var(--accent-gold);
+        }
+
+        .btn-primary:hover {
+            background: white;
+            color: var(--accent-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(184, 134, 11, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-gold);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .floating-item {
+            position: absolute;
+            font-size: 4rem;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .item-1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .item-2 { top: 60%; right: 10%; animation-delay: 1s; }
+        .item-3 { bottom: 10%; left: 15%; animation-delay: 2s; }
+        .item-4 { top: 30%; right: 5%; animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        /* ========== COLLECTIONS ========== */
+        .collections {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 { margin-bottom: 0.5rem; }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+            font-weight: 500;
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .collection-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+        }
+
+        .collection-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(184, 134, 11, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 4rem;
+        }
+
+        .vintage-image { background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); }
+        .designer-image { background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%); }
+        .streetwear-image { background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); }
+        .accessories-image { background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); }
+
+        .collection-card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; }
+        .collection-card p { font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-light); }
+
+        .link-arrow {
+            color: var(--accent-gold);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .link-arrow:hover { gap: 0.8rem; }
+
+        /* ========== ABOUT SECTION ========== */
+        .about {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--accent-cream) 0%, #fdfbf8 100%);
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h2 { text-align: left; margin-bottom: 1.5rem; }
+        .about-content p { margin-bottom: 1.5rem; font-size: 1rem; }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-gold);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label { font-size: 0.85rem; color: var(--text-light); font-weight: 500; }
+
+        .about-image { display: flex; align-items: center; justify-content: center; }
+
+        .image-placeholder {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, rgba(212, 165, 165, 0.2) 0%, rgba(184, 134, 11, 0.15) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+        }
+
+        .emoji-xl { font-size: 5rem; }
+        .emoji-large { font-size: 3rem; }
+
+        /* ========== SUSTAINABILITY ========== */
+        .sustainability {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #f5f5f5 0%, white 100%);
+        }
+
+        .sustainability-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .sustainability-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--accent-gold);
+        }
+
+        .sustainability-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(184, 134, 11, 0.15);
+        }
+
+        .sustainability-card .icon { font-size: 3rem; margin-bottom: 1rem; }
+        .sustainability-card h3 { margin-bottom: 1rem; font-size: 1.2rem; }
+        .sustainability-card p { font-size: 0.95rem; line-height: 1.7; }
+
+        /* ========== NEWSLETTER ========== */
+        .newsletter {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #a07c0a 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter-container { max-width: 600px; margin: 0 auto; }
+        .newsletter-container h2 { color: white; margin-bottom: 0.5rem; }
+
+        .newsletter-container p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form button {
+            padding: 0.8rem 2rem;
+            background: var(--primary-dark);
+            color: var(--accent-gold);
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            background: rgba(0, 0, 0, 0.7);
+            transform: translateY(-2px);
+        }
+
+        /* ========== CONTACT ========== */
+        .contact {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-container {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .contact-item { display: flex; gap: 1.5rem; }
+        .contact-icon { font-size: 2rem; min-width: 40px; text-align: center; line-height: 1; }
+
+        .contact-item h4 {
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .contact-item p { font-size: 0.95rem; }
+
+        /* ========== WHATSAPP FLOAT ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #25D366;
+            color: white;
+            padding: 0.85rem 1.4rem;
+            border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            animation: wa-pulse 2.5s ease-in-out infinite;
+        }
+
+        .whatsapp-float:hover {
+            background: #1ebe5d;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55);
+            animation: none;
+        }
+
+        .whatsapp-float svg {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+        }
+
+        @keyframes wa-pulse {
+            0%, 100% { box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45); }
+            50% { box-shadow: 0 6px 30px rgba(37, 211, 102, 0.7); }
+        }
+
+        @media (max-width: 480px) {
+            .whatsapp-float { bottom: 1.2rem; right: 1.2rem; padding: 0.8rem 1.1rem; font-size: 0.82rem; }
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 2rem;
+        }
+
+        .footer-section h4 { color: var(--accent-gold); margin-bottom: 1rem; font-size: 1rem; }
+        .footer-section p { color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; }
+        .footer-section ul { list-style: none; }
+        .footer-section li { margin-bottom: 0.8rem; }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover { color: var(--accent-gold); }
+
+        .social-links { display: flex; gap: 1rem; }
+
+        .social-link {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover { background: var(--accent-gold); color: white; }
+
+        .footer-bottom { text-align: center; color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; }
+        .footer-bottom a { color: var(--accent-gold); transition: color 0.3s; }
+        .footer-bottom a:hover { color: white; }
+
+        /* ========== CATALOGUE ========== */
+        .catalogue {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #fdfbf8 0%, var(--accent-cream) 100%);
+        }
+
+        .catalogue-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.4rem;
+            border-radius: 25px;
+            border: 2px solid var(--accent-gold);
+            background: transparent;
+            color: var(--accent-gold);
+            font-weight: 600;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: all 0.25s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--accent-gold);
+            color: white;
+        }
+
+        .catalogue-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .item-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 35px rgba(184, 134, 11, 0.18);
+        }
+
+        .item-card[data-category] { }
+
+        .item-img {
+            width: 100%;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+        }
+
+        .item-badge {
+            position: absolute;
+            top: 0.8rem;
+            left: 0.8rem;
+            background: var(--accent-gold);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.25rem 0.65rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-sold { background: #c0392b; }
+        .badge-new  { background: #27ae60; }
+
+        .item-body {
+            padding: 1.3rem 1.4rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .item-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.4rem;
+        }
+
+        .item-category {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .item-size {
+            font-size: 0.75rem;
+            background: #f0f0f0;
+            color: var(--text-dark);
+            padding: 0.2rem 0.55rem;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .item-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.35rem;
+        }
+
+        .item-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .item-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .item-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        .order-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 0.55rem 1.1rem;
+            border-radius: 25px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+
+        .order-btn:hover {
+            background: #1ebe5d;
+            transform: scale(1.04);
+        }
+
+        .order-btn.sold {
+            background: #ccc;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .catalogue-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .catalogue-cta p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* hide cards filtered out */
+        .item-card.hidden { display: none; }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+
+            .navbar-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                gap: 1rem;
+                padding: 2rem;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar-menu.active { left: 0; }
+            h2 { font-size: 1.8rem; }
+            .about-container { grid-template-columns: 1fr; }
+            .image-placeholder { width: 250px; height: 250px; }
+            .collections-grid, .sustainability-grid { grid-template-columns: 1fr; }
+            .newsletter-form { flex-direction: column; }
+            .newsletter-form input, .newsletter-form button { width: 100%; }
+            .about-stats { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-container { padding: 0 1rem; }
+            .brand-name { font-size: 1.2rem; }
+            .nav-link { font-size: 0.85rem; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            .collections { padding: 3rem 1rem; }
+            .about { padding: 3rem 1rem; }
+            .stat { padding: 1rem; }
+            .stat-number { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div style="display: flex; align-items: center;">
+                <span class="brand-icon">👑</span>
+                <span class="brand-name">Regalia Thrift</span>
+            </div>
+            <div class="navbar-menu" id="navMenu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#collections" class="nav-link">Collections</a>
+                <a href="#catalogue" class="nav-link">Catalogue</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#sustainability" class="nav-link">Sustainability</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button class="shop-btn" data-scroll-to="catalogue">Shop Now</button>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Discover Timeless Fashion</h1>
+            <p class="hero-subtitle">Curated secondhand pieces that tell a story. Vintage elegance meets modern sustainability.</p>
+            <div class="hero-cta">
+                <button class="btn btn-primary" data-scroll-to="catalogue">Explore Collection</button>
+                <button class="btn btn-secondary">Learn More</button>
+            </div>
+        </div>
+        <div class="floating-item item-1">👗</div>
+        <div class="floating-item item-2">👔</div>
+        <div class="floating-item item-3">👠</div>
+        <div class="floating-item item-4">💎</div>
+    </section>
+
+    <!-- Featured Collections -->
+    <section id="collections" class="collections">
+        <div class="section-header">
+            <h2>Our Collections</h2>
+            <p>Handpicked treasures from around the world</p>
+        </div>
+        <div class="collections-grid">
+            <div class="collection-card">
+                <div class="card-image vintage-image">
+                    <span class="emoji-large">👗</span>
+                </div>
+                <h3>Vintage Classics</h3>
+                <p>Authentic pieces from the 60s, 70s, and 80s. Timeless elegance with character.</p>
+                <a href="#" class="link-arrow">Explore →</a>
+            </div>
+            <div class="collection-card">
+                <div class="card-image designer-image">
+                    <span class="emoji-large">💎</span>
+                </div>
+                <h3>Designer Finds</h3>
+                <p>Luxury brands at a fraction of the price. Premium quality, exceptional value.</p>
+                <a href="#" class="link-arrow">Explore →</a>
+            </div>
+            <div class="collection-card">
+                <div class="card-image streetwear-image">
+                    <span class="emoji-large">👕</span>
+                </div>
+                <h3>Streetwear & Casual</h3>
+                <p>Trendy pieces perfect for everyday style. Express yourself with authentic fashion.</p>
+                <a href="#" class="link-arrow">Explore →</a>
+            </div>
+            <div class="collection-card">
+                <div class="card-image accessories-image">
+                    <span class="emoji-large">👜</span>
+                </div>
+                <h3>Accessories & Footwear</h3>
+                <p>Complete your look with bags, belts, and vintage shoes that make a statement.</p>
+                <a href="#" class="link-arrow">Explore →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-content">
+                <h2>About Regalia Thrift</h2>
+                <p>We believe that fashion is a form of self-expression, and secondhand pieces carry stories that mass-produced items simply cannot. Every garment in our collection is carefully curated for quality, style, and character.</p>
+                <p>Our mission is to make vintage and designer fashion accessible to everyone while promoting sustainable consumption and reducing fashion waste.</p>
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Items in Stock</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50K+</span>
+                        <span class="stat-label">Happy Customers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">2.5K</span>
+                        <span class="stat-label">Tons CO₂ Saved</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Countries</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <div class="image-placeholder">
+                    <span class="emoji-xl">✨</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Section -->
+    <section id="sustainability" class="sustainability">
+        <div class="section-header">
+            <h2>Our Commitment to Sustainability</h2>
+            <p>Fashion with a conscience</p>
+        </div>
+        <div class="sustainability-grid">
+            <div class="sustainability-card">
+                <div class="icon">♻️</div>
+                <h3>Reduce Waste</h3>
+                <p>Every secondhand piece keeps clothing out of landfills, extending its lifecycle and reducing environmental impact.</p>
+            </div>
+            <div class="sustainability-card">
+                <div class="icon">🌍</div>
+                <h3>Lower Carbon Footprint</h3>
+                <p>Buying secondhand dramatically reduces the carbon emissions associated with new clothing production.</p>
+            </div>
+            <div class="sustainability-card">
+                <div class="icon">💚</div>
+                <h3>Ethical Sourcing</h3>
+                <p>We partner with ethical suppliers and ensure fair practices throughout our entire supply chain.</p>
+            </div>
+            <div class="sustainability-card">
+                <div class="icon">👥</div>
+                <h3>Community Impact</h3>
+                <p>A portion of our profits supports local communities and fashion education initiatives.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalogue / Order Section -->
+    <section id="catalogue" class="catalogue">
+        <div class="section-header">
+            <h2>Shop Our Catalogue</h2>
+            <p>Browse & order directly via WhatsApp</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="catalogue-filters">
+            <button class="filter-btn active" data-filter="all">All Items</button>
+            <button class="filter-btn" data-filter="vintage">Vintage</button>
+            <button class="filter-btn" data-filter="designer">Designer</button>
+            <button class="filter-btn" data-filter="streetwear">Streetwear</button>
+            <button class="filter-btn" data-filter="accessories">Accessories</button>
+        </div>
+
+        <!-- Items Grid -->
+        <div class="catalogue-grid" id="catalogueGrid">
+        </div>
+
+                <!-- CTA -->
+        <div class="catalogue-cta">
+            <p>Don't see your size or style? Send us a message — we update stock regularly!</p>
+            <a href="https://wa.me/2349157708303?text=Hi%20Regalia%20Thrift!%20I%27d%20like%20to%20enquire%20about%20available%20items." target="_blank" class="btn btn-primary" style="display:inline-block;">
+                💬 Ask About More Items
+            </a>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="newsletter-container">
+            <h2>Stay Updated</h2>
+            <p>Subscribe for new arrivals, style tips, and exclusive offers</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-header">
+            <h2>Get In Touch</h2>
+            <p>We'd love to hear from you</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div>
+                        <h4>Location 1</h4>
+                        <p>University of Ibadan<br>Agbowo, Ibadan</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <div>
+                        <h4>Location 2</h4>
+                        <p>Prince Adeniyi Adeyemi Housing Scheme<br>Oke Medina, Oyo</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <div>
+                        <h4>Call Us</h4>
+                        <p><a href="tel:09065976534" style="color:var(--accent-gold);">09065976534</a></p>
+                        <h4 style="margin-top:0.6rem;">WhatsApp</h4>
+                        <p><a href="https://wa.me/2349157708303" target="_blank" style="color:#25D366;">09157708303</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:regaliathrift@gmail.com" style="color:var(--accent-gold);">regaliathrift@gmail.com</a></p>
+                        <h4 style="margin-top:0.6rem;">Social</h4>
+                        <p>
+                            <a href="https://instagram.com/regaliathrift" target="_blank" style="color:var(--accent-gold);">Instagram</a> &nbsp;|&nbsp;
+                            <a href="https://facebook.com/regaliathrift" target="_blank" style="color:var(--accent-gold);">Facebook</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Regalia Thrift</h4>
+                <p>Timeless fashion with a sustainable twist. Discover unique, curated secondhand pieces that tell a story.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#catalogue">Catalogue</a></li>
+                    <li><a href="#collections">Collections</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#sustainability">Sustainability</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://facebook.com/regaliathrift" target="_blank" class="social-link" title="Facebook">f</a>
+                    <a href="https://instagram.com/regaliathrift" target="_blank" class="social-link" title="Instagram">📷</a>
+                    <a href="https://wa.me/2349157708303" target="_blank" class="social-link" title="WhatsApp">💬</a>
+                </div>
+                <p style="margin-top:1rem; font-size:0.85rem;">
+                    <a href="mailto:regaliathrift@gmail.com" style="color:rgba(255,255,255,0.7);">regaliathrift@gmail.com</a>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Regalia Thrift. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/2349157708303" target="_blank" class="whatsapp-float" title="Chat with us on WhatsApp">
+        <svg viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 2C8.268 2 2 8.268 2 16c0 2.478.675 4.797 1.849 6.784L2 30l7.43-1.817A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.6a11.55 11.55 0 0 1-5.91-1.62l-.423-.252-4.41 1.078 1.112-4.285-.277-.44A11.565 11.565 0 0 1 4.4 16C4.4 9.593 9.593 4.4 16 4.4S27.6 9.593 27.6 16 22.407 27.6 16 27.6zm6.37-8.677c-.349-.175-2.066-1.019-2.386-1.135-.32-.116-.553-.175-.786.175-.233.35-.9 1.135-1.104 1.368-.203.233-.407.262-.756.087-.349-.175-1.474-.543-2.807-1.731-1.037-.926-1.737-2.07-1.94-2.419-.204-.35-.022-.538.153-.713.158-.157.35-.408.524-.612.175-.204.233-.35.35-.583.116-.233.058-.437-.029-.612-.087-.175-.786-1.893-1.077-2.593-.283-.68-.572-.588-.786-.599l-.67-.012c-.233 0-.612.087-.932.437s-1.223 1.194-1.223 2.912 1.252 3.379 1.426 3.612c.175.233 2.464 3.763 5.97 5.277.834.36 1.485.574 1.993.736.838.266 1.601.228 2.203.138.672-.1 2.066-.844 2.358-1.66.291-.815.291-1.514.204-1.66-.087-.145-.32-.233-.67-.408z"/>
+        </svg>
+        Chat on WhatsApp
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.navbar-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert('Thank you for subscribing with: ' + email);
+            this.reset();
+        });
+
+        // Fix: Explore Collection & Shop Now buttons scroll to catalogue
+        document.querySelectorAll('[data-scroll-to]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = document.getElementById(btn.dataset.scrollTo);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // =============================================
+        // CATALOGUE — read-only customer view
+        // =============================================
+        const WA_NUMBER = '2349157708303';
+        const STORAGE_KEY = 'regalia_catalogue_v1';
+
+        const BADGE_COLORS = { 'New In': '#27ae60', 'Hot': '#b8860b', 'Sold': '#c0392b' };
+        const CARD_BACKGROUNDS = {
+            vintage:     'linear-gradient(135deg,#fce4ec,#f8bbd0)',
+            designer:    'linear-gradient(135deg,#e1f5fe,#b3e5fc)',
+            streetwear:  'linear-gradient(135deg,#f3e5f5,#e1bee7)',
+            accessories: 'linear-gradient(135deg,#fff3e0,#ffe0b2)'
+        };
+        const CARD_EMOJIS = { vintage:'👗', designer:'💎', streetwear:'👕', accessories:'👜' };
+
+        const DEFAULT_PRODUCTS = [
+            { id:1, name:'70s Floral Midi Dress',    category:'vintage',     price:'6,500',  size:'M',        badge:'New In', desc:'Stunning retro print in excellent condition. Flattering A-line silhouette.' },
+            { id:2, name:'Designer Leather Tote',     category:'designer',    price:'18,000', size:'One Size', badge:'Hot',    desc:'Genuine leather tote in great condition. Spacious interior, luxury hardware.' },
+            { id:3, name:'Vintage Graphic Tee',       category:'streetwear',  price:'3,500',  size:'L',        badge:'New In', desc:"Original band tee from the 90s. Soft cotton, faded print — authentically worn-in." },
+            { id:4, name:'Strappy Heeled Sandals',    category:'accessories', price:'5,000',  size:'EU 39',    badge:'',       desc:'Barely worn block-heel sandals. Nude tone, goes with everything.' },
+            { id:5, name:'80s Oversized Blazer',      category:'vintage',     price:'9,000',  size:'XL',       badge:'',       desc:'Classic power-shoulder blazer in camel. Perfect for layering over anything.' },
+            { id:6, name:'Classic White Sneakers',    category:'designer',    price:'12,000', size:'EU 42',    badge:'Sold',   desc:'Premium branded sneakers, lightly used. Clean white with gold detailing.' },
+            { id:7, name:'High-Waist Mom Jeans',      category:'streetwear',  price:'4,500',  size:'S / W28',  badge:'New In', desc:'Flattering high-rise cut in light wash denim. Slightly distressed, very chic.' },
+            { id:8, name:'Woven Straw Basket Bag',    category:'accessories', price:'4,000',  size:'One Size', badge:'',       desc:'Handcrafted straw bag with leather handles. Perfect for summer outfits.' }
+        ];
+
+        function loadProducts() {
+            try { const s = localStorage.getItem(STORAGE_KEY); return s ? JSON.parse(s) : DEFAULT_PRODUCTS; }
+            catch(e) { return DEFAULT_PRODUCTS; }
+        }
+
+        function buildWhatsAppMsg(p) {
+            return encodeURIComponent(`Hi Regalia Thrift! I want to order the ${p.name} (₦${p.price}, Size ${p.size}).`);
+        }
+
+        function renderCard(p) {
+            const sold = p.badge === 'Sold';
+            const badgeHTML = p.badge ? `<span class="item-badge" style="background:${BADGE_COLORS[p.badge]||'var(--accent-gold)'};">${p.badge}</span>` : '';
+            const orderBtn = sold
+                ? `<span class="order-btn sold">Sold Out</span>`
+                : `<a class="order-btn" href="https://wa.me/${WA_NUMBER}?text=${buildWhatsAppMsg(p)}" target="_blank">💬 Order</a>`;
+            return `
+            <div class="item-card" data-category="${p.category}">
+                <div class="item-img" style="background:${CARD_BACKGROUNDS[p.category]||'#f5f5f5'};">
+                    ${CARD_EMOJIS[p.category]||'🛍️'}
+                    ${badgeHTML}
+                </div>
+                <div class="item-body">
+                    <div class="item-meta">
+                        <span class="item-category">${p.category.charAt(0).toUpperCase()+p.category.slice(1)}</span>
+                        <span class="item-size">${p.size}</span>
+                    </div>
+                    <div class="item-name">${p.name}</div>
+                    <p class="item-desc">${p.desc}</p>
+                    <div class="item-footer">
+                        <span class="item-price">₦${p.price}</span>
+                        ${orderBtn}
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        let products = loadProducts();
+        let activeFilter = 'all';
+
+        function renderGrid() {
+            const grid = document.getElementById('catalogueGrid');
+            const filtered = activeFilter === 'all' ? products : products.filter(p => p.category === activeFilter);
+            grid.innerHTML = filtered.length
+                ? filtered.map(renderCard).join('')
+                : `<p style="grid-column:1/-1;text-align:center;color:var(--text-light);padding:3rem;">No items in this category yet. Check back soon!</p>`;
+        }
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeFilter = btn.dataset.filter;
+                renderGrid();
+            });
+        });
+
+        renderGrid();
+        console.log('Regalia Thrift loaded.');
+    </script>
+</body>
+
+</html>
